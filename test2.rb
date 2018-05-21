@@ -44,4 +44,7 @@ qerwerewr
 24
 2
 42
+<<<<<<< HEAD
+>>>>>>> testing
+=======
 >>>>>>> testing
