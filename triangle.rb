@@ -48,10 +48,13 @@ class Triangle < Figure
   def initialize(side1:, side2: nil, side3: nil, angle1: nil, angle2: nil)
     @side1, @side2, @side3, @angle1, @angle2 = side1, side2, side3, angle1, angle2
 
+  def angles
     if @side1 && @side2 && @side3
-      # find angles
+      3.times.map { |i| sides.rotate(i) }.map { |(s1, s2, s3)| Math.acos(Math.cos((s1**2 + s2**2 - s3**2) / 2 * s1 * s2)) }
+    end
+  end
 
-    elsif @side1 && @angle1 && @angle2
+    if @side1 && @angle1 && @angle2
       @side2 = (@side1 * Math.sin(@angle1)) / Math.sin(@angle2)
       @side3 = find_side3
 
@@ -121,7 +124,7 @@ end
 RSpec.describe Circle do
   subject { described_class.new(3) }
 
-  #it {  }
+  it { expect(subject.area).to eq 28.3 }
 end
 
 RSpec.describe Triangle do
