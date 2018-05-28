@@ -50,7 +50,7 @@ class Triangle < Figure
 
   def angles
     if @side1 && @side2 && @side3
-      3.times.map { |i| sides.rotate(i) }.map { |(s1, s2, s3)| Math.acos(Math.cos((s1**2 + s2**2 - s3**2) / 2 * s1 * s2)) }
+      3.times.map { |i| sides.rotate(i) }.map { |(s1, s2, s3)| Math.acos((s1**2 + s2**2 - s3**2) / (2.0 * s1 * s2)) }.map { |a| a * (180.0 / Math::PI) }
     end
   end
 
