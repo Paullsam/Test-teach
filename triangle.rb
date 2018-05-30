@@ -59,10 +59,8 @@ class Triangle < Figure
     elsif @side1 && @side2 && @angle1
       @side3 = find_side3
       angles
-
     else
       raise Figure::Error, "Введите корректные данные"
-    end
 
     unless 3.times.map { |i| sides.rotate(i) }.all? { |(s1, s2, s3)| s1 + s2 > s3 }
       raise Figure::Error, "Неправильный треугольник"
@@ -109,6 +107,7 @@ class Circle < Figure
     Math::PI * radius ** 2
   end
 end
+
 
 RSpec.describe Rectangle do
   subject { described_class.new(2, 3) }
