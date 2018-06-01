@@ -1,13 +1,5 @@
-class Cube
+class Cube < Parallelepiped
   def initialize(side)
-    @side = side
-  end
-
-  def area
-    @side**2 * 6
-  end
-
-  def capacity
-    @side**3
+    @side1, @side2, @height = side, side, side
   end
 end
