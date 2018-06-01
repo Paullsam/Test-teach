@@ -1,4 +1,4 @@
-class Parallelepiped < Figure
+class Parallelepiped
   def initialize(side1, side2, height)
     @side1, @side2, @height = side1, side2, height
   end
@@ -28,3 +28,6 @@ class Parallelepiped < Figure
       @side1 * @side2 * @height
     end
   end
+
+require 'cube'
+require 'parallelepiped'

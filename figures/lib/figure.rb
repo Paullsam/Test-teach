@@ -21,5 +21,5 @@ end
 
 require 'rectangle'
 require 'square'
-require 'cube'
-require 'parallelepiped'
+require 'circle'
+require 'triangle'

@@ -47,17 +47,3 @@ class Triangle < Figure
     @angle3 = 180.0 - (@angle1 + @angle2)
   end
 end
-
-class Circle < Figure
-  def initialize(radius)
-    @radius = radius
-  end
-
-  def perimeter
-    2.0 * Math::PI * radius
-  end
-
-  def area
-    Math::PI * radius ** 2
-  end
-end
