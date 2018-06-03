@@ -12,7 +12,7 @@ class Pyramid < Figure
       Triangle.new(@side, @side, @side).area + (sides.count * lateral_area)
 
     elsif @base == 'CIRCLE'
-      BaseCircle.area(@radius) + (Math::PI * @radius * apothem)
+      Circle.new(@radius).area + (Math::PI * @radius * apothem)
 
     else raise Figure::Error, "Введите тип основания"
     end
@@ -26,7 +26,7 @@ class Pyramid < Figure
       Triangle.new(@side, @side, @side).area / 3.0
 
     elsif @base == 'CIRCLE'
-      BaseCircle.area(@radius) / 3.0
+      Circle.new(@radius).area / 3.0
   end
 
   def m_radius
@@ -35,7 +35,7 @@ class Pyramid < Figure
       @side / 2.0
 
     elsif sides.count = 3
-      (Math.sqrt(3.0) / 6) * @side
+      (Math.sqrt(3.0) / 6.0) * @side
     else @radius
     end
   end

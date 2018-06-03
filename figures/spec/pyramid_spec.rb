@@ -14,9 +14,15 @@ Rcpec.describe Pyramid do
     it { expect(subject.apothem).to eq 5 }
   end
 
-  contex "Error"
+  contex 'Error'
     let(:args) { {height: 15, base: квадрат, side: 5} }
 
     it { expect{ describe_class.new(**args)}.to raise_error(Figure::Error, 'Введите тип основания') }
+  end
+
+  contex 'Конус'
+    let(:args) { {height: 8, base: cirle, raduis: 3} }
+
+    it { expect(subject.m_radius).to eq 3 }
   end
 end
