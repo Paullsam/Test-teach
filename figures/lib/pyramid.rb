@@ -31,11 +31,12 @@ class Pyramid < Figure
 
   def m_radius
 
-    if sides.count = 4
+    if sides.count == 4
       @side / 2.0
 
-    elsif sides.count = 3
+    elsif sides.count == 3
       (Math.sqrt(3.0) / 6.0) * @side
+
     else @radius
     end
   end
