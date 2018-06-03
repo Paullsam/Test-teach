@@ -27,6 +27,7 @@ class Pyramid < Figure
 
     elsif @base == 'CIRCLE'
       Circle.new(@radius).area / 3.0
+    end
   end
 
   def m_radius

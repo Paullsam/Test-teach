@@ -15,6 +15,7 @@ class Triangle < Figure
       angles
     else
       raise Figure::Error, "Введите корректные данные"
+    end
 
     unless 3.times.map { |i| sides.rotate(i) }.all? { |(s1, s2, s3)| s1 + s2 > s3 }
       raise Figure::Error, "Неправильный треугольник"

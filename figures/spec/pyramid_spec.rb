@@ -1,26 +1,26 @@
-Rcpec.describe Pyramid do
+RSpec.xdescribe Pyramid do
   subject { describe_class.new(**args) }
 
-  contex 'Пирамида с квадратным основанием'
+  context 'Пирамида с квадратным основанием' do
     let(:args) { {height: 10, base: sqUare, side: 4} }
 
     it { expect(subject.area).to eq 98 }
     it { expect(subject.volume).to eq 53.3333 }
   end
 
-  contex 'Пирамида с треугольным основанием'
+  context 'Пирамида с треугольным основанием' do
     let(:args) { {height: 4, base: triangle, side: 3} }
 
     it { expect(subject.apothem).to eq 5 }
   end
 
-  contex 'Error'
+  context 'Error' do
     let(:args) { {height: 15, base: квадрат, side: 5} }
 
     it { expect{ describe_class.new(**args)}.to raise_error(Figure::Error, 'Введите тип основания') }
   end
 
-  contex 'Конус'
+  context 'Конус' do
     let(:args) { {height: 8, base: cirle, raduis: 3} }
 
     it { expect(subject.m_radius).to eq 3 }
