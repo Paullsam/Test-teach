@@ -1,52 +1,34 @@
-class Pyramid < Figure
-  def initialize(height:, base:, side: nil, radius: nil)
-    @height, @base, @side, @radius = height, base.to_s.upcase, side, radius
+class Pyramid < SolidFigure
+  def initialize(height:, base:, side: nil)
+    @height, @base, @side = height, base.to_s.upcase, side
+  end
+
+  def base_object
+    @base_object ||= case @base
+    when 'SQUARE'
+      Square.new(@side)
+    when 'TRIANGLE'
+      Triangle.new(side1: @side, side2: @side, side3: @side)
+    when 'CIRCLE'
+      Circle.new(@side)
+    else
+      raise SolidFigure::Error, 'Incorrect base type'
+    end
   end
 
   def area
-
-    if @base == 'SQUARE'
-      Square.new(@side).area + (sides.count * lateral_area)
-
-    elsif @base == 'TRIANGLE'
-      Triangle.new(@side, @side, @side).area + (sides.count * lateral_area)
-
-    elsif @base == 'CIRCLE'
-      Circle.new(@radius).area + (Math::PI * @radius * apothem)
-
-    else raise Figure::Error, "Введите тип основания"
-    end
+    base_object.area + lateral_area
   end
 
   def volume
-    if @base == 'SQUARE'
-      Square.new(@side).area  / 3.0
-
-    elsif @base == 'TRIANGLE'
-      Triangle.new(@side, @side, @side).area / 3.0
-
-    elsif @base == 'CIRCLE'
-      Circle.new(@radius).area / 3.0
-    end
-  end
-
-  def m_radius
-
-    if sides.count == 4
-      @side / 2.0
-
-    elsif sides.count == 3
-      (Math.sqrt(3.0) / 6.0) * @side
-
-    else @radius
-    end
+    area / 3.0
   end
 
   def lateral_area
-    (apothem * perimeter) / 2.0
+    (apothem * base_object.perimeter) / 2.0
   end
 
   def apothem
-    Math.sqrt(m_radius**2 + @height**2)
+    Math.sqrt(base_object.m_radius ** 2 + @height ** 2)
   end
 end

@@ -16,7 +16,7 @@ class Prism < SolidFigure
     when 'CIRCLE'
       Circle.new(@side)
     else
-      raise  SolidFigure::StandardError, 'unkonwn base type'
+      raise SolidFigure::StandardError, 'unkonwn base type'
     end
   end
 

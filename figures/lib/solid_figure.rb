@@ -14,3 +14,5 @@ end
 require 'parallelepiped'
 require 'cube'
 require 'prism'
+require 'pyramid'
+require 'figure'

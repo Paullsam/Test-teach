@@ -10,4 +10,8 @@ class Rectangle < Figure
   def sides
     [@side1, @side1, @side2, @side2]
   end
+
+  def b_radius
+    Math.sqrt(@side1 ** 2 + @side2 ** 2) / 2
+  end
 end

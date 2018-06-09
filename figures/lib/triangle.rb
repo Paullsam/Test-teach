@@ -34,6 +34,14 @@ class Triangle < Figure
     3.times.map { |i| sides.rotate(i) }.map { |(s1, s2, s3)| (Math.acos((s1**2 + s2**2 - s3**2) / (2.0 * s1 * s2))) * (180.0 / Math::PI) }
   end
 
+  def m_radius
+    (Math.sqrt((p - @side1) * (p - @side2) * (p - @side3))) / p
+  end
+
+  def b_radius
+    (@side1 * @side2 * side3) / (4 * Math.sqrt((p - @side1) * (p - @side2) * (p - @side3)))
+  end
+
   private
 
   def p
