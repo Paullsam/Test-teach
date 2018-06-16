@@ -4,15 +4,15 @@ class Prism < SolidFigure
   end
 
   def base_area
-    base_obj.area
+    base_object.area
   end
 
-  def base_obj
-    @base_obj ||= case @base
+  def base_object
+    @base_object ||= case @base
     when 'SQUARE'
       Square.new(@side)
     when 'TRIANGLE'
-      Triangle.new(@side)
+      Triangle.new(side1: @side, side2: @side, side3: @side)
     when 'CIRCLE'
       Circle.new(@side)
     else
@@ -20,9 +20,11 @@ class Prism < SolidFigure
     end
   end
 
+  def area
+    (base_object.perimeter * @height) + (2 * base_area)
+  end
+
   def volume
     base_area * @height
   end
 end
-
-require 'figure'
