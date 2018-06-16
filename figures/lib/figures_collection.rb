@@ -29,6 +29,6 @@ class FiguresCollection < Figure
   end
 
   def group_by_type
-    collection.group_by{ |figure_type| figure_type[0] }
+    collection.keys.group_by{ |figure_type| figure_type.class }
   end
 end
