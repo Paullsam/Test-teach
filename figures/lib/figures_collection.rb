@@ -21,14 +21,14 @@ class FiguresCollection < Figure
   end
 
   def sort
-    @collection = collection.sort { |a, b| a[1] <=> b[1] }
+    @collection = collection.sort{ |a, b| a[1] <=> b[1] }.to_h
   end
 
   def sort!
-    collection.sort { |a, b| a[1] <=> b[1] }
+    collection.sort{ |a, b| a[1] <=> b[1] }
   end
 
   def group_by_type
-    collection.
+    collection.group_by{ |figure_type| figure_type[0] }
   end
 end
