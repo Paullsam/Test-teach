@@ -1,34 +1,34 @@
 class FiguresCollection < Figure
 
   def collection
-    @collection = Hash.new
+    @collection = []
   end
 
   def add(figure_type)
-    collection.merge!( { "#{figure_type}" => figure_type.area } )
+    collection << figure_type
   end
 
   def all
-    collection.values
+    collection
   end
 
   def max
-    collection.values.max
+    collection.map{ |figure_type| figure_type.area }.max
   end
 
   def min
-    collection.values.min
+    collection.map{ |figure_type| figure_type.area }.min
   end
 
   def sort
-    @collection = collection.sort{ |a, b| a[1] <=> b[1] }.to_h
+    collection.sort
   end
 
   def sort!
-    collection.sort{ |a, b| a[1] <=> b[1] }
+    collection.sort!
   end
 
   def group_by_type
-    collection.keys.group_by{ |figure_type| figure_type.class }
+    collection.group_by{ |figure_type| figure_type.class }
   end
 end

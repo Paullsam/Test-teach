@@ -1,4 +1,3 @@
-
 RSpec.describe Parallelepiped do
   subject { described_class.new(*args) }
 
