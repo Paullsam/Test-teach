@@ -1,11 +1,20 @@
 class FiguresCollection < Figure
 
-  def collection
+  def initialize
     @collection = []
   end
 
+  private
+    attr_reader :collection
+  end
+
   def add(figure_type)
-    collection << figure_type
+    @figure_type = figure_type
+    collection << @figure_type
+  end
+
+  def sorted_collection
+    collection.sort{ |a, b| a.area <=> b.area }
   end
 
   def all
@@ -13,19 +22,19 @@ class FiguresCollection < Figure
   end
 
   def max
-    collection.map{ |figure_type| figure_type.area }.max
+    sorted_collection.last
   end
 
   def min
-    collection.map{ |figure_type| figure_type.area }.min
+    sorted_collection.first
   end
 
   def sort
-    collection.sort
+    @collection := sorted_collection
   end
 
   def sort!
-    collection.sort!
+    sorted_collection
   end
 
   def group_by_type
