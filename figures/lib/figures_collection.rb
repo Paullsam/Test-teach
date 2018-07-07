@@ -1,16 +1,11 @@
-class FiguresCollection < Figure
+class FiguresCollection
 
   def initialize
     @collection = []
   end
 
-  private
-    attr_reader :collection
-  end
-
   def add(figure_type)
-    @figure_type = figure_type
-    collection << @figure_type
+    collection << figure_type
   end
 
   def sorted_collection
@@ -30,14 +25,20 @@ class FiguresCollection < Figure
   end
 
   def sort
-    @collection := sorted_collection
+    @newcollection = FiguresCollection.new
+    @newcollection = self.sorted_collection
   end
 
   def sort!
-    sorted_collection
+    self.sorted_collection
   end
 
   def group_by_type
-    collection.group_by{ |figure_type| figure_type.class }
+    collection.group_by { |figure_type| figure_type.class }
   end
+
+  private
+    attr_reader :collection
 end
+
+require 'figure'
