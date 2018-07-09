@@ -8,29 +8,29 @@ class FiguresCollection
     collection << figure_type
   end
 
-  def sorted_collection
-    collection.sort{ |a, b| a.area <=> b.area }
-  end
+ # def sorted_collection
+ #   collection.sort{ |a, b| a.area <=> b.area }
+ # end
 
   def all
     collection
   end
 
   def max
-    sorted_collection.last
+    collection.max
   end
 
   def min
-    sorted_collection.first
+    collection.min
   end
 
   def sort
     @newcollection = FiguresCollection.new
-    @newcollection = self.sorted_collection
+    @newcollection = collection.sort
   end
 
   def sort!
-    self.sorted_collection
+    collection.sort!
   end
 
   def group_by_type
