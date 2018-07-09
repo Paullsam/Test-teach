@@ -27,20 +27,6 @@ RSpec.describe FiguresCollection do
     end
   end
 
-=begin
-  describe 'sorted_collection' do
-    subject { collection.sorted_collection }
-
-    it 'sort collection' do
-      collection.add square
-      collection.add triangle
-      collection.add rectangle
-
-      is_expected.to eq [triangle, rectangle, square]
-    end
-  end
-=end
-
   describe 'max' do
     subject { collection.max }
 

@@ -8,10 +8,6 @@ class FiguresCollection
     collection << figure_type
   end
 
- # def sorted_collection
- #   collection.sort{ |a, b| a.area <=> b.area }
- # end
-
   def all
     collection
   end
