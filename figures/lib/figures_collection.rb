@@ -27,6 +27,7 @@ class FiguresCollection
 
   def sort!
     collection.sort!
+    self
   end
 
   def group_by_type

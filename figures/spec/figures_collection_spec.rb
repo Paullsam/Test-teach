@@ -66,13 +66,19 @@ RSpec.describe FiguresCollection do
 
   describe 'sort!' do
     subject { collection.sort! }
-
-    it 'returns sorted collection' do
+    before do
       collection.add rectangle
       collection.add square
       collection.add triangle
+    end
 
-      is_expected.to eq [triangle, rectangle, square]
+    it 'returns itself' do
+      is_expected.to eq collection
+    end
+
+    it 'returns sorted collection' do
+      subject
+      expect(collection.all).to eq [triangle, rectangle, square]
     end
   end
 
