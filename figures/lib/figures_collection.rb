@@ -4,8 +4,8 @@ class FiguresCollection
     @collection = []
   end
 
-  def add(figure_type)
-    collection << figure_type
+  def add(figure)
+    collection << figure
   end
 
   def all
@@ -22,7 +22,7 @@ class FiguresCollection
 
   def sort
     @newcollection = FiguresCollection.new
-    @newcollection = collection.sort
+  #  collection.sort!
   end
 
   def sort!
@@ -30,7 +30,7 @@ class FiguresCollection
   end
 
   def group_by_type
-    collection.group_by { |figure_type| figure_type.class }
+    collection.group_by { |figure| figure.class }
   end
 
   private

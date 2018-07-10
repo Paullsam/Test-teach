@@ -59,7 +59,8 @@ RSpec.describe FiguresCollection do
       collection.add triangle
       collection.add rectangle
 
-      is_expected.to eq [triangle, rectangle, square]
+      is_expected.to be_an_instance_of FiguresCollection
+      expect(subject.all).to eq [triangle, rectangle, square]
     end
   end
 
