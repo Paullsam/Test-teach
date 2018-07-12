@@ -22,7 +22,8 @@ class FiguresCollection
 
   def sort
     @newcollection = FiguresCollection.new
-  #  collection.sort!
+    collection.map { |figure| @newcollection.add(figure) }
+    @newcollection.sort!
   end
 
   def sort!

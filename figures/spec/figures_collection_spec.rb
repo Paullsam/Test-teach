@@ -53,14 +53,23 @@ RSpec.describe FiguresCollection do
 
   describe 'sort' do
     subject { collection.sort }
-
-    it 'returns new sorted collection' do
+    before do
       collection.add square
       collection.add triangle
       collection.add rectangle
+    end
 
+    it 'returns new collection' do
       is_expected.to be_an_instance_of FiguresCollection
+      is_expected.not_to eq collection
+    end
+
+    it 'returns new sorted collection' do
       expect(subject.all).to eq [triangle, rectangle, square]
+    end
+
+    it 'old collection not changed' do
+      expect { collection.sort }.not_to change { collection.all }
     end
   end
 
