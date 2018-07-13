@@ -21,9 +21,9 @@ class FiguresCollection
   end
 
   def sort
-    @newcollection = FiguresCollection.new
-    collection.map { |figure| @newcollection.add(figure) }
-    @newcollection.sort!
+    newcollection = FiguresCollection.new
+    collection.map { |figure| newcollection.add(figure) }
+    newcollection.sort!
   end
 
   def sort!
@@ -32,7 +32,8 @@ class FiguresCollection
   end
 
   def group_by_type
-    collection.group_by { |figure| figure.class }
+    newgroup = collection.group_by { |figure| figure.class }
+    newgroup.each_value { |value| FiguresCollection.new.add(value) }
   end
 
   private

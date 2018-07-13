@@ -94,15 +94,22 @@ RSpec.describe FiguresCollection do
   describe 'group by type' do
     subject { collection.group_by_type }
 
-    it 'returns group' do
+    before do
       collection.add rectangle
       collection.add triangle
       collection.add square
       collection.add rectangle2
       collection.add triangle2
       collection.add square2
+    end
 
+    it 'returns group' do
       is_expected.to eq Rectangle => [rectangle, rectangle2], Triangle => [triangle, triangle2], Square => [square, square2]
     end
+
+  #  it 'returns collections' do
+
+
+  #  end
   end
 end
