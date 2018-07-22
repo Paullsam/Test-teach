@@ -11,6 +11,7 @@ RSpec.describe FiguresCollection do
     subject { collection }
 
     it { expect(subject.add(triangle)).to eq [triangle] }
+    it { expect { subject.add(1)}.to raise_error(FiguresCollection::Error, "'1' shoud be type of Figure") }
   end
 
   describe 'all' do
@@ -95,21 +96,22 @@ RSpec.describe FiguresCollection do
     subject { collection.group_by_type }
 
     before do
-      collection.add rectangle
       collection.add triangle
       collection.add square
-      collection.add rectangle2
       collection.add triangle2
       collection.add square2
     end
 
-    it 'returns group' do
-      is_expected.to eq Rectangle => [rectangle, rectangle2], Triangle => [triangle, triangle2], Square => [square, square2]
+    it 'returns collections' do
+      expect(subject.values.all? { |x| x.is_a? FiguresCollection }).to eq true
     end
 
-  #  it 'returns collections' do
+    it 'all keys is a Figure' do
+      expect(subject.keys.all? { |x| x <= Figure }).to eq true
+    end
 
-
-  #  end
+    it 'values returns correct Array' do
+      expect(subject[Triangle].all).to eq [triangle, triangle2]
+    end
   end
 end
