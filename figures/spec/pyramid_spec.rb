@@ -18,6 +18,6 @@ RSpec.describe Pyramid do
   context 'Error' do
     let(:args) { {height: 15, base: "квадрат", side: 5} }
 
-    it { expect { subject }.to raise_error(SolidFigure::Error, 'Incorrect base type') }
+    it { expect { subject.area }.to raise_error(SolidFigure::Error, "Incorrect base type") }
   end
 end

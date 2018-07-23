@@ -1,7 +1,7 @@
 require 'check'
 
 class Figure
-
+  class Error < StandardError; end
   include Comparable, Check
 
   def <=>(other)

@@ -5,14 +5,14 @@ class Pyramid < SolidFigure
 
   def base_object
     @base_object ||= case @base
-    when 'SQUARE'
+    when "SQUARE"
       Square.new(@side)
-    when 'TRIANGLE'
+    when "TRIANGLE"
       Triangle.new(side1: @side, side2: @side, side3: @side)
-    when 'CIRCLE'
+    when "CIRCLE"
       Circle.new(@side)
     else
-      raise SolidFigure::Error, 'Incorrect base type'
+      raise SolidFigure::Error, "Incorrect base type"
     end
   end
 

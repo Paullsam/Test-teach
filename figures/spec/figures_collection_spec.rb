@@ -11,7 +11,7 @@ RSpec.describe FiguresCollection do
     subject { collection }
 
     it { expect(subject.add(triangle)).to eq [triangle] }
-    it { expect { subject.add(1)}.to raise_error(Check::Error, "'1' should be type of Figure") }
+    it { expect { subject.add(1)}.to raise_error(FiguresCollection::Error, "'1' should be type of Figure") }
   end
 
   describe 'all' do

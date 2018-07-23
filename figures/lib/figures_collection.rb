@@ -1,7 +1,7 @@
 require 'check'
 
 class FiguresCollection
-
+  class Error < StandardError; end
   include Check
 
   def initialize
@@ -26,7 +26,7 @@ class FiguresCollection
   end
 
   def sort
-    set_collection(collection).sort!
+    create_collection(collection).sort!
   end
 
   def sort!
@@ -37,7 +37,7 @@ class FiguresCollection
   def group_by_type
     group =  collection.group_by { |figure| figure.class }
     new_group = { }
-    group.each { |key, value| new_group[key] = set_collection(value) }
+    group.each { |key, value| new_group[key] = create_collection(value) }
     new_group
   end
 
@@ -45,7 +45,7 @@ class FiguresCollection
     attr_reader :collection
 
   protected
-    def set_collection(array)
+    def create_collection(array)
       new_collection = FiguresCollection.new
       array.each { |figure| new_collection.add(figure) }
       new_collection
