@@ -1,12 +1,11 @@
+require 'check'
+
 class Figure
-  class Error < StandardError; end
-  include Comparable
+
+  include Comparable, Check
 
   def <=>(other)
-    unless other.is_a? Figure
-      raise Figure::Error, "`#{other.inspect}` should be type of `Figure`"
-    end
-
+    checking(other)
     self.area <=> other.area
   end
 

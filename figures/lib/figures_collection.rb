@@ -1,15 +1,15 @@
+require 'check'
+
 class FiguresCollection
-  class Error < StandardError; end
+
+  include Check
 
   def initialize
     @collection = []
   end
 
   def add(figure)
-    unless figure.is_a? Figure
-      raise FiguresCollection::Error, "'#{figure.inspect}' shoud be type of Figure"
-    end
-
+    checking(figure)
     collection << figure
   end
 
@@ -26,9 +26,7 @@ class FiguresCollection
   end
 
   def sort
-    new_collection = FiguresCollection.new
-    collection.each { |figure| new_collection.add(figure) }
-    new_collection.sort!
+    set_collection(collection).sort!
   end
 
   def sort!
@@ -39,17 +37,17 @@ class FiguresCollection
   def group_by_type
     group =  collection.group_by { |figure| figure.class }
     new_group = { }
-
-    group.each do |key, value|
-      new_collection = FiguresCollection.new
-      value.each { |figure| new_collection.add(figure) }
-      new_group[key] = new_collection
-    end
+    group.each { |key, value| new_group[key] = set_collection(value) }
     new_group
   end
 
   private
     attr_reader :collection
-end
 
-require 'figure'
+  protected
+    def set_collection(array)
+      new_collection = FiguresCollection.new
+      array.each { |figure| new_collection.add(figure) }
+      new_collection
+    end
+end
