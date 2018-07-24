@@ -114,4 +114,35 @@ RSpec.describe FiguresCollection do
       expect(subject[Triangle].all).to eq [triangle, triangle2]
     end
   end
+
+  describe 'each test' do
+    subject { collection.each }
+
+    before do
+      collection.add triangle
+      collection.add square
+      collection.add rectangle
+    end
+
+    it 'each works' do
+      expect { |b| collection.each(&b) }.to yield_successive_args(triangle, square, rectangle)
+    end
+  end
+
+  describe 'map test' do
+    subject { collection.map }
+
+    before do
+      collection.add triangle
+      collection.add rectangle
+      collection.add square
+    end
+
+    it 'map works' do
+      expect { |b| collection.map(&b) }.to yield_successive_args(triangle, rectangle, square)
+    end
+
+  #  it 'returns new collection' do
+  #  end
+  end
 end

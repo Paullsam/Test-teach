@@ -41,13 +41,26 @@ class FiguresCollection
     new_group
   end
 
+  def each(&block)
+    for i in 0..(collection.length - 1)
+      block.call(collection[i])
+    end
+  end
+
+  def map(&block)
+    new_collection = []
+      for i in 0..(collection.length - 1)
+        new_collection << block.call(collection[i])
+      end
+    new_collection
+  end
+
   private
     attr_reader :collection
 
-  protected
     def create_collection(array)
-      new_collection = FiguresCollection.new
-      array.each { |figure| new_collection.add(figure) }
-      new_collection
+      new_fig_collection = FiguresCollection.new
+      array.each { |figure| new_fig_collection.add(figure) }
+      new_fig_collection
     end
 end
