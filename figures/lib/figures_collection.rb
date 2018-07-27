@@ -42,17 +42,24 @@ class FiguresCollection
   end
 
   def each(&block)
-    for i in 0..(collection.length - 1)
-      block.call(collection[i])
+    for element in collection
+      block.call(element)
     end
   end
 
   def map(&block)
     new_collection = []
-      for i in 0..(collection.length - 1)
-        new_collection << block.call(collection[i])
-      end
+    for element in collection
+      new_collection << block.call(element)
+    end
     new_collection
+  end
+
+  def inject(init_value = 0)
+    for element in collection
+      init_value += element.area
+    end
+    init_value
   end
 
   private
