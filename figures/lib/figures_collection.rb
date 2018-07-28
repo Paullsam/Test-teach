@@ -57,7 +57,7 @@ class FiguresCollection
 
   def inject(init_value = 0)
     for element in collection
-      init_value += element.area
+      init_value += yield(element)
     end
     init_value
   end

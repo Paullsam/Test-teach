@@ -142,12 +142,12 @@ RSpec.describe FiguresCollection do
       expect(collection.map(&:perimeter)).to match_array([24, 30, 40])
     end
 
-    it 'returns new collection' do
-      expect(collection.map(&:area)).not_to eq collection
+    it 'map' do
+      expect { |b| collection.map(&b) }.to yield_successive_args(triangle, rectangle, square)
     end
   end
 
-  describe 'map test' do
+  describe 'inject test' do
     subject { collection.inject }
 
     before do
@@ -156,8 +156,7 @@ RSpec.describe FiguresCollection do
     end
 
     it 'inject' do
-      expect(collection.inject(3)).to eq 153
-      expect(subject).to eq 150
+      expect(collection.inject(&:area)).to eq 150
     end
   end
 end
