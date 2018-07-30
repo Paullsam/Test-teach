@@ -115,7 +115,7 @@ RSpec.describe FiguresCollection do
     end
   end
 
-  describe 'each test' do
+  describe '#each' do
     subject { collection.each }
 
     before do
@@ -129,7 +129,7 @@ RSpec.describe FiguresCollection do
     end
   end
 
-  describe 'map test' do
+  describe '#map' do
     subject { collection.map }
 
     before do
@@ -147,7 +147,7 @@ RSpec.describe FiguresCollection do
     end
   end
 
-  describe 'inject test' do
+  describe '#inject' do
     subject { collection.inject }
 
     before do
@@ -156,7 +156,7 @@ RSpec.describe FiguresCollection do
     end
 
     it 'inject' do
-      expect(collection.inject(&:area)).to eq 150
-    end
+      expect { |b| collection.inject(&b) }.to yield_successive_args(rectangle, square)
+     end
   end
 end

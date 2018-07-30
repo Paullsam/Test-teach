@@ -55,9 +55,9 @@ class FiguresCollection
     new_collection
   end
 
-  def inject(init_value = 0)
+  def inject(init_value = nil)
     for element in collection
-      init_value += yield(element)
+      init_value = yield(element, init_value)
     end
     init_value
   end
